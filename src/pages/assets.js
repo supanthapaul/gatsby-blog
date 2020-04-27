@@ -1,5 +1,5 @@
 import React from 'react'
-import {graphql, useStaticQuery } from 'gatsby'
+import {Link, graphql, useStaticQuery } from 'gatsby'
 
 import Layout from '../components/layout'
 
@@ -14,6 +14,9 @@ const AssetsPage = () => {
               frontmatter {
                 title,
                 date
+              },
+              fields {
+                slug
               }
             }
           }
@@ -23,8 +26,12 @@ const AssetsPage = () => {
     // building assets list
     const assetList = assetsData.allMarkdownRemark.edges.map(edge => (
     <li key={edge.node.frontmatter.title}>
-        <h1>{edge.node.frontmatter.title}</h1>
-        <p>{edge.node.frontmatter.date}</p>
+        <Link to={`/assets/${edge.node.fields.slug}`}>
+          <h1>
+              {edge.node.frontmatter.title}
+          </h1>
+          <p>{edge.node.frontmatter.date}</p>
+        </Link>
     </li>))
     return (
         <Layout>
