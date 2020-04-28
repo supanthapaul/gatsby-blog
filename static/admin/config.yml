@@ -1,0 +1,21 @@
+backend:
+  name: gitlab
+  repo: supanthapaul/gatsby-test-blog # Path to your GitLab repository
+  auth_type: implicit # Required for implicit grant
+  app_id: bf0d44b8aa87ebbc5ba30c60c6cc91c28f9d9dd78d01f85e7181004d08c6d6e3 # Application ID from your GitLab settings
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "assets"
+    label: "Assets"
+    folder: "src/assets"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+     preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
