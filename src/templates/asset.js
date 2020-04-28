@@ -2,6 +2,8 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
+import Head from '../components/head'
+
 
 // exporting the query will make gatsby run it
 // and the data will be available as props
@@ -28,7 +30,8 @@ query(
 const AssetPage = (props) => {
     return (
         <Layout>
-            <h2>{props.data.markdownRemark.frontmatter.title}</h2>
+          <Head title={props.data.markdownRemark.frontmatter.title} />
+            <h1>{props.data.markdownRemark.frontmatter.title}</h1>
             <p>{props.data.markdownRemark.frontmatter.date}</p>
             <div dangerouslySetInnerHTML={{__html: props.data.markdownRemark.html}}>    
             </div>
