@@ -9,7 +9,7 @@ const AboutPage = () => {
         <Layout>
             <Head title="About" />
             <h1>About Me.</h1>
-            <p>I'm supantha paul, a game dev living in West Bengal, India.</p>
+            <p>I'm supantha paul, a web and game developer living in West Bengal, India.</p>
             <p><Link to="/contact">Contact Me.</Link></p>
         </Layout>
     )

@@ -2,12 +2,12 @@ import React from 'react'
 import {Link, graphql, useStaticQuery } from 'gatsby'
 
 import Layout from '../components/layout'
-import assetsStyles from './assets.module.scss'
+import blogStyles from './blog.module.scss'
 import Head from '../components/head'
 
 const AssetsPage = () => {
     // GraphQL query
-    const assetsData = useStaticQuery(graphql`
+    const blogData = useStaticQuery(graphql`
     query {
         allMarkdownRemark {
           edges {
@@ -25,9 +25,9 @@ const AssetsPage = () => {
       }
     `)
     // building assets list
-    const assetList = assetsData.allMarkdownRemark.edges.map(edge => (
-    <li className={assetsStyles.asset} key={edge.node.frontmatter.title}>
-        <Link to={`/assets/${edge.node.fields.slug}`}>
+    const postsList = blogData.allMarkdownRemark.edges.map(edge => (
+    <li className={blogStyles.post} key={edge.node.frontmatter.title}>
+        <Link to={`/blog/${edge.node.fields.slug}`}>
           <h1>
               {edge.node.frontmatter.title}
           </h1>
@@ -36,10 +36,10 @@ const AssetsPage = () => {
     </li>))
     return (
         <Layout>
-          <Head title="Assets" />
-            <h1>Assets</h1>
-            <ul className={assetsStyles.assets}>
-                {assetList}
+          <Head title="Blog" />
+            <h1>Blog</h1>
+            <ul className={blogStyles.posts}>
+                {postsList}
             </ul>
         </Layout>
     )
